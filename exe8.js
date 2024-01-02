@@ -1,0 +1,6 @@
+class bankdetails {
+
+    constructor(){
+        
+    }
+}

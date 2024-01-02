@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalizing Sentences</title>
+</head>
+<body>
+
+    <h2>Capitalizing Sentences</h2>
+
+    <label for="inputParagraph">Enter Paragraph:</label>
+    <input type="text" id="inputParagraph" rows="6"></input>
+    <button onclick="capitalizeFirstWord()">Capitalize</button>
+
+    <p id="outputParagraph">Output:</p>
+
+    <script>
+        function capitalizeFirstWord() {
+            var inputParagraph1 = document.getElementById('inputParagraph').value;
+            var outputParagraph = capitalizeFirstLetter(inputParagraph1);
+            document.getElementById('outputParagraph').innerText = 'Output: ' + outputParagraph;
+        }
+
+        function capitalizeFirstLetter(text) {
+           
+            return text.replace(/(^|[.!?]\s+)([a-z])/g, function(match, group1, group2) {
+                return group1 + group2.toUpperCase();
+            });
+        }
+    </script>
+
+</body>
+</html>

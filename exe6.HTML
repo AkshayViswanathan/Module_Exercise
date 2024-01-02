@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+</head>
+<body>
+    
+    <label>Enter date </label>
+    <input type="date" id="inputElement"/>ss
+    <button type="submit" onclick="getdate()"> Sumbit</button>
+
+<script>
+    function getdate(){
+var inputdata = document.getElementById("inputElement").value
+var inputeddate = new Date(inputdata).toDateString()
+// console.log(inputeddate)
+
+var today = new Date().toDateString()
+if(inputeddate > today){
+    console.log("day after")
+    alert("day after")
+
+}else if (inputeddate < today){
+    console.log("day before")
+    alert("day before")
+}
+
+else{ console.log("today's date")
+alert("today's date");}
+
+
+    } 
+    
+   
+
+</script>
+</body>
+</html>

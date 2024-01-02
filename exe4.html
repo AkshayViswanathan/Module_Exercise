@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Parsing Calculator</title>
+</head>
+<body>
+
+    <h2>String Parsing Calculator:
+        divide, plus, minus, multiply
+    </h2>
+
+    <label for="inputExpression">Enter Expression:</label>
+    <input type="text" id="inputExpression">
+    <button onclick="calculate()">Calculate</button>
+
+    <p id="result">Result: </p>
+
+    <script>
+        function calculate() {
+            var inputExpression = document.getElementById('inputExpression').value;
+
+            try {
+                var result = parseAndCalculate(inputExpression);
+                document.getElementById('result').innerText = 'Result: ' + result;
+            } catch (error) {
+                document.getElementById('result').innerText = 'Error';
+            }
+        }
+
+        function parseAndCalculate(expression) {
+            // Replace operator names with corresponding symbols
+            expression = expression.replace(/plus/g, '+');
+            expression = expression.replace(/minus/g, '-');
+            expression = expression.replace(/multipliedby/g, '*');
+            expression = expression.replace(/dividedby/g, '/');
+
+            // Evaluate the expression using eval
+            var rawResult = eval(expression);
+
+            // Round the result to the next whole number
+            var roundedResult = Math.round(rawResult);
+
+            return roundedResult;
+        }
+    </script>
+
+</body>
+</html>

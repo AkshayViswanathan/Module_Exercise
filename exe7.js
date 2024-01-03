@@ -11,12 +11,9 @@ function validation( config, segment){
         }else{
             console.log("failed, not required");
         }
-        
-        
+           
     }
-
 }
-
 
 const GLConfig = {
     "CO" : { type: "NORMAL"},

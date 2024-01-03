@@ -17,10 +17,10 @@ checkBalance(){
     console.log("your Current balance:"+ this.accountBalance);
 }
 
-depositeAmount(){
-    this.accountBalance = this.accountBalance + this.despoite;
+depositeAmount(despoite){
+    this.accountBalance = this.accountBalance + despoite;
 
-    console.log(`You deposited: ${this.despoite} , Total amount : ${this.accountBalance} `)
+    console.log(`You deposited: ${despoite} , Total amount : ${this.accountBalance} `)
 }
 
 }
@@ -39,4 +39,5 @@ let person4 = new Bank("pranav", "babu", "123562345", 2000)
 person1.accountdeatils()
 person2.fullname()   
 person3.checkBalance()
-person4.depositeAmount()
+person4.depositeAmount(500)
+person3.depositeAmount(500)

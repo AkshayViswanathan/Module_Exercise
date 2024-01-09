@@ -1,5 +1,6 @@
 <template>
 <NavBarcomp/>
+<!-- <demo/> -->
 <registerComp/>
 
 </template>

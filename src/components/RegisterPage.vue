@@ -1,93 +1,96 @@
-
-/*------------------------template----------------------------*/
+/*----------------------template-------------------- */
 <template>
 
-<div class="container">  
-   <div class="input1">
-
-       <label for="email" class="lable1">Enter email</label>
-       <el-input type="text" 
-                  v-model="state.email" 
-                     placeholder="@gmail.com" />
-
-     <span v-if="v$.email.$error"> {{ v$.email.$errors[0].$message }}</span>
-                    
-                      </div> 
- 
-
-  <div class="input2">
-         <label class="lable2"> password</label>
-
-         <el-input
-            v-model="state.password.password"
-              type="password"
-                placeholder="password"
-                  show-password/>
-                  <span v-if="v$.password.password.$error"> {{ v$.password.password.$errors[0].$message }}</span>
-</div>
-
-<div class="input2">
-         <label class="lable2"> password</label>
-
-         <el-input
-            v-model="state.password.confirm"
-              type="password"
-                placeholder="confirm password"
-                  show-password/>
-                  <span v-if="v$.password.confirm.$error"> {{ v$.password.confirm.$errors[0].$message }}</span>
-</div>
-<div class="Submit button">
-  <el-button type="success" @click="submitForm">Submit</el-button>
-</div>
-</div>
-
-
-</template>
-
-/*--------------------------------------script------------------------------- */
-<script lang="js" setup>
-
-
-  import {required, email,minLength, sameAs } from '@vuelidate/validators'
-  import { reactive, computed } from 'vue';
-  import usevalidate from "@vuelidate/core"
-
-
-   const state =reactive({
-      email: "",
-      password:{
-        password: "",
-        confirm: " ",
-      },
-    } ) 
-    
-    const rules = computed(()=> {
-      return {
-        email: { required, email },
-        password:{
-          password: { required, minLength: minLength(6) },
-          confirm:{ required, sameAs: sameAs(state.password.password)},
-        }
-      };
-    });
-    
-    const v$ = usevalidate(rules, state)
-    
+  <div class="container">  
+     <div class="input1">
   
-  async function submitForm (){
-    await this.v$.$validate() 
-    if(!this.v$.$error){
-      alert("Success, form submitted")
-    }else{
-      alert("validation failed")
-    }
+         <label for="email" class="lable1">Enter email</label>
+         <el-input type="text" 
+                    v-model="state.email" 
+                       placeholder="@gmail.com" />
+                       <span v-if="v$.email.$error"> {{ v$.email.$errors[0].$message }}</span>
+  
+  </div> 
    
+    <div class="input2">
+           <label class="lable2"> password</label>
+  
+           <el-input
+              v-model="state.password"
+                type="password"
+                  placeholder="password"
+                    show-password/>
+                    <span v-if="v$.password.$error"> {{ v$.password.$errors[0].$message }}</span>
+  </div>
+  
+  <div class="input3">
+           <label class="lable2"> password</label>
+  
+           <el-input
+              v-model="state.confirmPassword"
+                type="password"
+                  placeholder="confirm password"
+                    show-password/>
+                    <span v-if="v$.confirmPassword.$error"> {{ v$.confirmPassword.$errors[0].$message }}</span>
+
+  </div>
+  <div class="Submit button">
+    <el-button  class="button" type="success" @click="submitForm">Submit</el-button>
+  </div>
+  </div>
+  
+  
+  </template>
+
+/*----------------------------script------------------------ */
+<script>
+import useVuelidate from '@vuelidate/core';
+import { required, email, sameAs, minLength } from '@vuelidate/validators';
+import { reactive, computed } from 'vue';
+
+
+export default{
+
+  setup(){
+      const state = reactive({
+                 email: "",
+              password: "",
+       confirmPassword: "",
+      })
+
+      const rules= computed(()=>{
+          return{
+              email: {required, email },
+             password: {required, minLength: minLength(6) },
+             confirmPassword: {required, sameAs: sameAs(state.password) },
+
+          }
+      })
+
+      const v$ = useVuelidate(rules, state)
+      return {
+          state,
+          v$,
+      }
+  },
+  
+
+  methods:{
+  submitForm(){
+      console.log(this.v$);
+      console.log(this.state);
+   this.v$.$validate()
+   if(!this.v$.$error){
+      alert('sucess validation')
+   } else{
+      alert("validation failed")
+   }
   }
-
-
-
+}
+}
 
 </script>
+
 
 /* ------------------------------ CSS ------------------------------*/ 
 <style>
@@ -102,6 +105,7 @@
     margin: 20px 20px;
 width: 70%;   
 align-items: center; 
+height: 90px;
 
 }
 
@@ -109,6 +113,11 @@ align-items: center;
     color: azure;
     margin-right: 20px;
 }
+span{
+ 
+  color: rgb(255, 9, 9);
+}
+
 
 
 </style>

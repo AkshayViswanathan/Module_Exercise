@@ -39,6 +39,26 @@
   </div>
   </div>
   
+  <div v-if="submittedData.length > 0">
+      <h2>Submitted Data</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Confirm Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(data, index) in submittedData" :key="index">
+            <td>{{ data.email }}</td>
+            <td>{{ data.password }}</td>
+            <td>{{ data.confirmPassword }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
   
   </template>
 
@@ -48,10 +68,12 @@ import useVuelidate from '@vuelidate/core';
 import { required, email, sameAs, minLength } from '@vuelidate/validators';
 import { reactive, computed } from 'vue';
 
-
 export default{
 
   setup(){
+
+    const submittedData = reactive([]);
+
       const state = reactive({
                  email: "",
               password: "",
@@ -71,6 +93,8 @@ export default{
       return {
           state,
           v$,
+          submittedData,
+      submitForm,
       }
   },
   
@@ -82,10 +106,16 @@ export default{
    this.v$.$validate()
    if(!this.v$.$error){
       alert('sucess validation')
+      submittedData.push({
+          email: state.email,
+          password: state.password,
+          confirmPassword: state.confirmPassword,})
+        
    } else{
       alert("validation failed")
    }
   }
+  
 }
 }
 

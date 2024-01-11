@@ -1,14 +1,18 @@
-/*----------------------template-------------------- */
 <template>
 
   <div class="container">  
+    <div id="formtext" > 
+
+      <h2 > Form Validation</h2>
+    </div>
+
      <div class="input1">
   
          <label for="email" class="lable1">Enter email</label>
          <el-input type="text" 
                     v-model="state.email" 
                        placeholder="@gmail.com" />
-                       <span v-if="v$.email.$error"> {{ v$.email.$errors[0].$message }}</span>
+                       <span class="message" v-if="v$.email.$error"> {{ v$.email.$errors[0].$message }}</span>
   
   </div> 
    
@@ -20,64 +24,114 @@
                 type="password"
                   placeholder="password"
                     show-password/>
-                    <span v-if="v$.password.$error"> {{ v$.password.$errors[0].$message }}</span>
+                    <span class="message" v-if="v$.password.$error"> {{ v$.password.$errors[0].$message }}</span>
   </div>
   
-  <div class="input3">
-           <label class="lable2"> password</label>
+  <div class="input2">
+           <label class="lable2"> Confirm password</label>
   
            <el-input
               v-model="state.confirmPassword"
                 type="password"
                   placeholder="confirm password"
                     show-password/>
-                    <span v-if="v$.confirmPassword.$error"> {{ v$.confirmPassword.$errors[0].$message }}</span>
+                    <span class="message" v-if="v$.confirmPassword.$error"> {{ v$.confirmPassword.$errors[0].$message }}</span>
 
   </div>
+
+ 
+<div id="divbox">
+  <div style="margin-top: 20px" class="radiobutton">
+  <el-radio-group v-model="state.radio">
+    <el-radio-button label="Female" />
+    <el-radio-button label="Male" />
+  </el-radio-group>
+  <span class="message" v-if="v$.radio.$error">{{ v$.radio.$errors[0].$message }}</span>
+</div>
+
+<div class="dropdown">  
+
+<el-select v-model="state.value" clearable placeholder="Select">
+<el-option
+  v-for="item in options"
+  :key="item.value"
+  :label="item.label"
+  :value="item.value"
+/>  
+</el-select>
+<span class="message" v-if="v$.value.$error">{{ v$.value.$errors[0].$message }}</span>
+
+</div>
+
+
+</div>
+
+
+
   <div class="Submit button">
-    <el-button  class="button" type="success" @click="submitForm">Submit</el-button>
+    <el-button type="success" @click="submitForm" style="color: rgb(255, 255, 255); ">Submit</el-button>
   </div>
+
   </div>
   
-  <div v-if="submittedData.length > 0">
-      <h2>Submitted Data</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Confirm Password</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(data, index) in submittedData" :key="index">
-            <td>{{ data.email }}</td>
-            <td>{{ data.password }}</td>
-            <td>{{ data.confirmPassword }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   
   
   </template>
 
-/*----------------------------script------------------------ */
 <script>
 import useVuelidate from '@vuelidate/core';
 import { required, email, sameAs, minLength } from '@vuelidate/validators';
 import { reactive, computed } from 'vue';
 
+
 export default{
+  
+  data() {
+  return {
+    value: '',
+    options: [
+      {
+        value: 'India',
+        label: 'India',
+      },
+      {
+        value: 'USA',
+        label: 'USA',
+      },
+      {
+        value: 'China',
+        label: 'China',
+      },
+      {
+        value: 'UAE',
+        label: 'UAE',
+      },
+      {
+        value: 'other',
+        label: 'other',
+      },
+
+    ],
+
+    radio: 'Female',
+    radio: "male"
+    
+  };
+},
+ 
+
 
   setup(){
-
-    const submittedData = reactive([]);
+      
 
       const state = reactive({
-                 email: "",
-              password: "",
+          email: "",
+       password: "",
        confirmPassword: "",
+       value: "",
+       radio: "",
+       
+
       })
 
       const rules= computed(()=>{
@@ -85,6 +139,8 @@ export default{
               email: {required, email },
              password: {required, minLength: minLength(6) },
              confirmPassword: {required, sameAs: sameAs(state.password) },
+             value: {required },
+             radio: {required }
 
           }
       })
@@ -93,62 +149,83 @@ export default{
       return {
           state,
           v$,
-          submittedData,
-      submitForm,
+          rules,
+
+          
       }
+      
   },
   
 
   methods:{
   submitForm(){
       console.log(this.v$);
-      console.log(this.state);
    this.v$.$validate()
    if(!this.v$.$error){
-      alert('sucess validation')
-      submittedData.push({
-          email: state.email,
-          password: state.password,
-          confirmPassword: state.confirmPassword,})
-        
+      alert('validation Sucessful')
    } else{
       alert("validation failed")
    }
   }
-  
 }
 }
 
 </script>
 
-
-/* ------------------------------ CSS ------------------------------*/ 
 <style>
 
 .container{
-    background-color: rgba(20, 44, 88, 0.822);
-   align-items: center;
-   padding: 50px ;
+  background-color: rgba(20, 44, 88, 0.822);
+ align-items: center;
+ padding: 50px ;
+ height: 600px;
+ color: aliceblue;
+ font-style: italic;
+
+ 
 }
 
-.input1, .input2, .input3, .dropdown, .radio{
-    margin: 20px 20px;
+.input1, .input2, .input3{
+  margin: 20px 20px;
+width: 70%;   
+
+height: 60px;
+
+}
+.radiobutton{
+  margin: 20px 20px;
 width: 70%;   
 align-items: center; 
-height: 90px;
+height: 60px;
+
+
+  
+}
+.dropdown{margin: 20px 20px;
+width: 70%;   
+align-items: center; 
+height: 60px;
+
+
 
 }
 
 .lable1, .lable2, .lable3{
-    color: azure;
-    margin-right: 20px;
+  color: azure;
+  margin-right: 20px;
 }
-span{
- 
-  color: rgb(255, 9, 9);
+.message{
+
+color: rgb(255, 0, 0);
+}
+
+
+#divbox{
+  display: flex;
+  justify-content: flex-end;
+
 }
 
 
 
 </style>
-  

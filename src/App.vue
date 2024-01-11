@@ -1,7 +1,7 @@
 <template>
 <NavBarcomp/>
-<demo/>
-<!-- <registerComp/> -->
+<!-- <demo/> -->
+<registerComp/>
 
 </template>
 

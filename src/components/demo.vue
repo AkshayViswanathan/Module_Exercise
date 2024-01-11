@@ -28,7 +28,7 @@
     </div>
     
     <div class="input2">
-             <label class="lable2"> password</label>
+             <label class="lable2"> Confirm password</label>
     
              <el-input
                 v-model="state.confirmPassword"

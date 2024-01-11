@@ -7,7 +7,7 @@
            <el-input type="text" 
                       v-model="state.email" 
                          placeholder="@gmail.com" />
-                         <span v-if="v$.email.$error"> {{ v$.email.$errors[0].$message }}</span>
+                         <span class="message" v-if="v$.email.$error"> {{ v$.email.$errors[0].$message }}</span>
     
     </div> 
      
@@ -19,7 +19,7 @@
                   type="password"
                     placeholder="password"
                       show-password/>
-                      <span v-if="v$.password.$error"> {{ v$.password.$errors[0].$message }}</span>
+                      <span class="message" v-if="v$.password.$error"> {{ v$.password.$errors[0].$message }}</span>
     </div>
     
     <div class="input2">
@@ -30,7 +30,7 @@
                   type="password"
                     placeholder="confirm password"
                       show-password/>
-                      <span v-if="v$.confirmPassword.$error"> {{ v$.confirmPassword.$errors[0].$message }}</span>
+                      <span class="message" v-if="v$.confirmPassword.$error"> {{ v$.confirmPassword.$errors[0].$message }}</span>
 
     </div>
 
@@ -41,7 +41,7 @@
       <el-radio-button label="Female" />
       <el-radio-button label="Male" />
     </el-radio-group>
-    <span v-if="v$.radio.$error">{{ v$.radio.$errors[0].$message }}</span>
+    <span class="message" v-if="v$.radio.$error">{{ v$.radio.$errors[0].$message }}</span>
   </div>
 
   <div class="dropdown">  
@@ -54,7 +54,7 @@
     :value="item.value"
  />  
   </el-select>
-  <span v-if="v$.value.$error">{{ v$.value.$errors[0].$message }}</span>
+  <span class="message" v-if="v$.value.$error">{{ v$.value.$errors[0].$message }}</span>
 
 </div>
 
@@ -173,6 +173,8 @@ export default{
     background-color: rgba(20, 44, 88, 0.822);
    align-items: center;
    padding: 50px ;
+   height: 600px;
+   
 }
 
 .input1, .input2, .input3{
@@ -204,15 +206,16 @@ height: 60px;
     color: azure;
     margin-right: 20px;
 }
-span{
+.message{
  
-  color: rgb(255, 255, 255);
+  color: rgb(255, 0, 0);
 }
 #divbox{
     display: flex;
 justify-content: flex-end;
 
 }
+
 
 
 

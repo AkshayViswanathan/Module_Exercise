@@ -1,6 +1,6 @@
 <template>
     <h2>
-        navabar
+        Navabar
     </h2>
 </template>
 <script>

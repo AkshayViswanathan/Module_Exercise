@@ -179,6 +179,9 @@ export default{
       console.log(this.v$);
    let result = await this.v$.$validate()
 
+
+
+
    if(result){
      this.tableData.push(
       {email : this.state.email,
@@ -186,10 +189,17 @@ export default{
       radio: this.state.radio,
       country : this.state.value,}
       )
-      console.log(result);
-      
+      &&
+      ( 
+        this.state.email="",
+      this.state.password="",
+       this.state.radio="",
+      this.state.value="",
+      this.state.confirmPassword=""
+      )
+  this.v$.$reset()
 
-
+      console.log();
    } 
   }
 }

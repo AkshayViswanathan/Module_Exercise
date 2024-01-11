@@ -1,6 +1,11 @@
 <template>
 
     <div class="container">  
+      <div id="formtext" > 
+
+        <h2 > Form Validation</h2>
+      </div>
+
        <div class="input1">
     
            <label for="email" class="lable1">Enter email</label>
@@ -174,13 +179,16 @@ export default{
    align-items: center;
    padding: 50px ;
    height: 600px;
+   color: aliceblue;
+   font-style: italic;
+
    
 }
 
 .input1, .input2, .input3{
     margin: 20px 20px;
 width: 70%;   
-align-items: center; 
+
 height: 60px;
 
 }
@@ -210,12 +218,13 @@ height: 60px;
  
   color: rgb(255, 0, 0);
 }
+
+
 #divbox{
     display: flex;
-justify-content: flex-end;
+    justify-content: flex-end;
 
 }
-
 
 
 

@@ -43,8 +43,8 @@
 <div id="divbox">
   <div style="margin-top: 20px" class="radiobutton">
   <el-radio-group v-model="state.radio">
-    <el-radio-button label="Female" />
-    <el-radio-button label="Male" />
+    <el-radio-button label="Female" >Female</el-radio-button>
+    <el-radio-button label="Male" > Male</el-radio-button>
   </el-radio-group>
   <span class="message" v-if="v$.radio.$error">{{ v$.radio.$errors[0].$message }}</span>
 </div>
@@ -72,6 +72,19 @@
     <el-button type="success" @click="submitForm" style="color: rgb(255, 255, 255); ">Submit</el-button>
   </div>
 
+
+  <div class="table"> 
+
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column prop="email" label="email" width="180" />
+      <el-table-column prop="password" label="password" width="180" />
+      <el-table-column prop="country" label="country" />
+      <el-table-column prop="radio" label="radio" />
+    </el-table>
+
+  </div>
+
+
   </div>
   
   
@@ -81,11 +94,13 @@
 <script>
 import useVuelidate from '@vuelidate/core';
 import { required, email, sameAs, minLength } from '@vuelidate/validators';
-import { reactive, computed } from 'vue';
+import { reactive, computed , ref} from 'vue';
 
 
 export default{
   
+  
+
   data() {
   return {
     value: '',
@@ -114,7 +129,7 @@ export default{
     ],
 
     radio: 'Female',
-    radio: "male"
+    
     
   };
 },
@@ -146,11 +161,13 @@ export default{
       })
 
       const v$ = useVuelidate(rules, state)
+      const tableData = ref([]);
+
       return {
           state,
           v$,
           rules,
-
+          tableData
           
       }
       
@@ -158,14 +175,22 @@ export default{
   
 
   methods:{
-  submitForm(){
+  async submitForm(){
       console.log(this.v$);
-   this.v$.$validate()
-   if(!this.v$.$error){
-      alert('validation Sucessful')
-   } else{
-      alert("validation failed")
-   }
+   let result = await this.v$.$validate()
+
+   if(result){
+     this.tableData.push(
+      {email : this.state.email,
+      password: this.state.password,
+      radio: this.state.radio,
+      country : this.state.value,}
+      )
+      console.log(result);
+      
+
+
+   } 
   }
 }
 }
@@ -178,7 +203,7 @@ export default{
   background-color: rgba(20, 44, 88, 0.822);
  align-items: center;
  padding: 50px ;
- height: 600px;
+ height: 1000px;
  color: aliceblue;
  font-style: italic;
 
@@ -225,6 +250,11 @@ color: rgb(255, 0, 0);
   justify-content: flex-end;
 
 }
+
+.table{
+  margin-top: 20px;
+}
+
 
 
 

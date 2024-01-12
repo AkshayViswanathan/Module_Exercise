@@ -254,7 +254,6 @@ height: 60px;
 color: rgb(255, 0, 0);
 }
 
-
 #divbox{
   display: flex;
   justify-content: flex-end;

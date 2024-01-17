@@ -1,22 +1,44 @@
 <template>
+     
 <div class="RuoterLinks">
-    <h3> Login page</h3>
-    <router-link to="/">Home</router-link>
-<router-link to="/about">About</router-link>
-<router-link to="/contact">contact</router-link>
+    <h3> Vue Home</h3>
+
+    <el-menu
+    :default-active="activeIndex2"
+    class="el-menu-demo"
+    mode="horizontal"
+    background-color="#545c64"
+    text-color="#fff"
+   
+    @select="handleSelect"
+  >
+ 
+  <router-link to="/"> <el-menu-item index="1" >Home</el-menu-item></router-link>
+  <router-link to="/about">  <el-menu-item index="2" >About</el-menu-item></router-link>
+   
+  <router-link to="/contact"><el-menu-item index="3">contact</el-menu-item> </router-link>
+
+
+</el-menu>
+
+
+
 </div>
-<RouterView/>
+<router-view></router-view>
+
 </template>
 
 <script >
-import {RouterView} from "vue-router";
-
 
 
 </script>
 <style>
 .RuoterLinks{
     color: rgba(29, 85, 189, 0.822);
+}
+
+a.router-link.active{
+    color: aqua;
 }
 
 </style>

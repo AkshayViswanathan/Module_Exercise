@@ -1,4 +1,7 @@
-<template>
+
+KEPT JUST FOR REFERENCE 
+
+<!-- <template>
 
   <div class="container">  
     <div id="formtext" > 
@@ -267,4 +270,4 @@ color: rgb(255, 0, 0);
 
 
 
-</style>
+</style> -->

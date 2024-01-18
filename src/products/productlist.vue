@@ -1,8 +1,9 @@
 <template>
 
-<ProductCard v-for="product in products" :key="product.id" :product="product" />
+<ProductCard v-for="product in products" :key="product.id" :product="product"  @cardClick="handleClick"/>
 
 </template>
+
 <script>
 
 import { ref } from "vue";
@@ -44,7 +45,7 @@ export default{
         {
             id: 4,
             productName: "cherry",
-            productimage:"https://www.netmeds.com/images/cms/wysiwyg/blog/2023/04/1680774098_Cornelian-Cherries_898x450.jpg",
+            productimage:"https://images.unsplash.com/photo-1528820394102-08ac680c5fdd?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             price: 70,
             discription: "Organice grape cultivated from techversant farm located in technonopark phase III. 100% organic and we only sell fresh product. 100% cash back if the product is not fresh.",
 
@@ -64,11 +65,18 @@ export default{
             price: 70,
             discription: "Organice grape cultivated from techversant farm located in technonopark phase III. 100% organic and we only sell fresh product. 100% cash back if the product is not fresh.",
 
-        }
+        },
     ])
+
+    
+
+    const handleClick=(data)=>{
+    alert(` Product "${data.productName}" add to cart`)
+  }
         
         return {
             products,
+            handleClick,
 }
 }
 }

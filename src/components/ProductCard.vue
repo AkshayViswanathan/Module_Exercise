@@ -24,8 +24,9 @@
       <v-btn
         color="orange-lighten-2"
         variant="text"
+        @click="handleClick"
       >
-        Buy now
+        Add To Cart
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -51,7 +52,7 @@
 
 </template>
 
-<script>
+<!-- <script>
  export default {
   props: {
     // Define the product prop
@@ -63,5 +64,30 @@
   data: () => ({
     show: false,
   }),
+
+ssetup(props, { emit }) {
+    const show = ref(false);
+
+    function sendEvent() {
+      emit("callAlert", props.product.productName);
+      console.log(props.product.productName);
+    }
+
+    return {
+      show,
+      sendEvent,
+    };
+  },
+  emits: ['callAlert'],
 };
+</script> -->
+
+<script setup>
+
+  const props = defineProps(['product']);
+  const emit = defineEmits(['cardClick']);
+  const handleClick = () => {
+  emit('cardClick', props.product);
+  }
+
 </script>

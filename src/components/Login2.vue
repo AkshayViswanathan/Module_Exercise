@@ -69,7 +69,7 @@
   
   
     <div class="Submit button">
-      <el-button type="success" @click="submitForm" style="color: rgb(255, 255, 255); ">Submit</el-button>
+      <el-button type="success" @click="submitForm" style="color: rgb(255, 255, 255); ">Sub mit</el-button>
     </div>
   
   
@@ -93,12 +93,13 @@
   
   
   <script>
-  import {useVuelidate } from '@vuelidate/core';
+  import { useVuelidate } from '@vuelidate/core';
   import { required, email, sameAs, minLength } from '@vuelidate/validators';
   import { ref, reactive, computed } from 'vue';
   
   export default {
-    setup() {
+    setup( ) {
+
       // Define your data properties using ref and reactive
       const state = reactive({
         email: "",
@@ -153,6 +154,10 @@
           state.confirmPassword = "";
   
           v$.value.$reset();
+
+          function callAlert(){
+            context.emit("Callfunc", v$.value.email )
+          }
         }
       };
   
@@ -164,9 +169,13 @@
         v$,
         tableData,
         submitForm,
+      
+
       };
     },
+  
   };
+  
   </script>
 
   

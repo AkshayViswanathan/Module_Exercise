@@ -4,6 +4,8 @@
     class="mx-auto"
     max-width="344"
 
+   display="flex" 
+    flex-wrap= "wrap"
   >
 
     <img
@@ -17,12 +19,12 @@
     </v-card-title>
 
     <v-card-subtitle>
-      {{ product.price}}
+      Cost: $ {{ product.price}}
     </v-card-subtitle>
 
     <v-card-actions>
       <v-btn
-        color="orange-lighten-2"
+        color="green"
         variant="text"
         @click="handleClick"
       >
@@ -91,3 +93,7 @@ ssetup(props, { emit }) {
   }
 
 </script>
+<style>
+
+
+</style>

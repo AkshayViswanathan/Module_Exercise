@@ -1,6 +1,7 @@
 <template>
+  <Popup  />
 
-    <div class="container">  
+    <div class="container">
       <div id="formtext" > 
   
         <h2 > Form Validation</h2>
@@ -48,6 +49,7 @@
     </el-radio-group>
     <span class="message" v-if="v$.radio.$error">{{ v$.radio.$errors[0].$message }}</span>
   </div>
+</div>
   
   <div class="dropdown">  
   
@@ -57,21 +59,8 @@
     :key="item.value"
     :label="item.label"
     :value="item.value"
-  />  
+    /> 
   </el-select>
-  <span class="message" v-if="v$.value.$error">{{ v$.value.$errors[0].$message }}</span>
-  
-  </div>
-  
-  
-  </div>
-  
-  
-  
-    <div class="Submit button">
-      <el-button type="success" @click="submitForm" style="color: rgb(255, 255, 255); ">Sub mit</el-button>
-    </div>
-  
   
     <div class="table"> 
   
@@ -80,25 +69,45 @@
         <el-table-column prop="password" label="password" width="180" />
         <el-table-column prop="country" label="country" />
         <el-table-column prop="radio" label="radio" />
+
+        <el-table-column >
+        <ElButton size="small" type="warning" @click="editRow(row.value)" > Edit </ElButton>
+        <ElButton size="small" type="danger"  @click="" > Delete </ElButton>
+        
+    
+      </el-table-column>
       </el-table>
   
     </div>
   
   
     </div>
-    
+  </div>
     
     
     </template>
   
   
-  <script>
+  <script setup>
   import { useVuelidate } from '@vuelidate/core';
   import { required, email, sameAs, minLength } from '@vuelidate/validators';
   import { ref, reactive, computed } from 'vue';
-  
-  export default {
-    setup( ) {
+  import Popup from './DialogBox.vue'
+ 
+
+  //edit button onclick function
+  const editRow = (row) => {
+ 
+  state.email = row.email;
+  state.password = row.password; 
+  state.value = row.country;
+  state.radio = row.radio;
+
+  // Open the dialogbox
+  dialogVisible.value = true;
+};
+
+
 
       // Define your data properties using ref and reactive
       const state = reactive({
@@ -169,12 +178,13 @@
         v$,
         tableData,
         submitForm,
+        editRow
       
 
       };
-    },
+    
   
-  };
+  
   
   </script>
 
@@ -235,10 +245,13 @@ color: rgb(255, 0, 0);
 
 .table{
   margin-top: 20px;
+  color: black;
 }
 
 
 
 
 </style>
+
+
   

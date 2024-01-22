@@ -47,7 +47,7 @@
 </div>
 </div>
 
-<div class="dropdown">  
+<div class="dropdown">
 
 <el-select clearable placeholder="Select">
 <el-option
@@ -57,7 +57,7 @@ v-for="item in options"
 :value="item.value"
 /> 
 </el-select>
-
+</div>
 
 </el-dialog>
 

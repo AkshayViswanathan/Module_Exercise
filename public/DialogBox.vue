@@ -1,5 +1,5 @@
-<template>
-<!-- <button @click="popupbutton"> on click</button> -->
+<!-- <template>
+
 <el-dialog
     v-model="dialogVisible"
     title="Tips"
@@ -61,37 +61,46 @@ v-for="item in options"
 
 </el-dialog>
 
-
 </template>
 
-<script>
+<script setup>
 
-import { ref } from 'vue';
+import { ref , defineProps, defineEmits} from 'vue';
 
-export default {
-  setup() {
-    const dialogVisible = ref(false); // or ref(false) if you want it initially hidden
-    // ... other setup logic
-
+    const dialogVisible = ref(false); // or ref(false) if you want it initially hidden -->
+    // 
+----------------------------------------------------------------
 // const popupbutton =( )=>{
 // dialogVisible.value = true;
 // }
+  //edit button onclick function
+// const editRow = (row) => {
 
+//    // Open the dialogbox
+//   dialogVisible.value = true;
+ 
+//  state.email = row.email;
+//  state.password = row.password; 
+//  state.value = row.country;
+//  state.radio = row.radio;
 
-    return {
-      dialogVisible,
-      // popupbutton,
-      // ... other values to expose
-    };
-  },
-  // ... other component options
-}
-</script>
+// };
+--------------------------------------------------------------
 
-<style>
-.dialogBoc{
+<!-- // const props = defineProps(['']);
+//   const emit = defineEmits(['cardClick']);
+//   const editRow = () => {
+//   emit('cardClick', props.);
+//   }
 
-    background-color: blue;
-    color: rgb(255, 255, 255);
-}
-</style>
+   -->
+
+<!-- // </script> -->
+<!-- 
+// <style>
+// .dialogBoc{
+
+//     background-color: blue;
+//     color: rgb(255, 255, 255);
+// }
+// </style> -->

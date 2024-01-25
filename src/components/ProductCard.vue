@@ -27,8 +27,7 @@
         color="green"
         variant="text"
         @click="handleClick"
-      >
-        Add To Cart
+      >click
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -36,7 +35,7 @@
       <v-btn
         :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
         @click="show = !show"
-      ></v-btn>
+      >more</v-btn>
     </v-card-actions>
 
     <v-expand-transition>
@@ -48,6 +47,8 @@
         </v-card-text>
       </div>
     </v-expand-transition>
+      
+
  
 
   </v-card>
@@ -76,7 +77,7 @@ ssetup(props, { emit }) {
     }
 
     return {
-      show,
+      show,emit
       sendEvent,
     };
   },
@@ -85,6 +86,9 @@ ssetup(props, { emit }) {
 </script> -->
 
 <script setup>
+
+  let show = false;
+
 
   const props = defineProps(['product']);
   const emit = defineEmits(['cardClick']);

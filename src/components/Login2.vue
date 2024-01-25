@@ -252,7 +252,7 @@ const closeEditModal = () => {
     // Define a function to handle form submission
     const submitForm = async () => {
       let result = await v$.value.$validate();
-                                              
+                                               
 
       if (result) {
           tableData.value.push({

@@ -5,14 +5,12 @@
     max-width="344"
 
    display="flex" 
-    flex-wrap= "wrap"
-  >
+    flex-wrap= "wrap" >
 
     <img
      :src="product.productimage"
-      height="200px"
-      cover
-    />
+      height="190px"
+      cover />
 
     <v-card-title>
      {{ product.productName }}
@@ -26,23 +24,21 @@
       <v-btn
         color="green"
         variant="text"
-        @click="handleClick"
-      >click
-      </v-btn>
+        @click="handleClick" > Click </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-btn
-        :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-        @click="show = !show"
-      >more</v-btn>
+        :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'
+        "
+        @click="show = !show" >  more  </v-btn>
     </v-card-actions>
 
     <v-expand-transition>
       <div v-show="show">
         <v-divider></v-divider>
 
-        <v-card-text>
+        <v-card-text >
          {{  product.discription }}
         </v-card-text>
       </div>
@@ -86,9 +82,11 @@ ssetup(props, { emit }) {
 </script> -->
 
 <script setup>
+import { ref } from 'vue';
 
-  let show = false;
+  const show = ref(false);
 
+ 
 
   const props = defineProps(['product']);
   const emit = defineEmits(['cardClick']);
@@ -98,6 +96,7 @@ ssetup(props, { emit }) {
 
 </script>
 <style>
+
 
 
 </style>

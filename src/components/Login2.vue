@@ -248,7 +248,6 @@ const closeEditModal = () => {
 
   
 
-
     // Define a function to handle form submission
     const submitForm = async () => {
       let result = await v$.value.$validate();
@@ -274,21 +273,9 @@ const closeEditModal = () => {
 
         v$.value.$reset();
 
-       
-       
-
 };
 
-
-
       }
-
-    
-
-   
-  
-  
-
 
 
 </script>

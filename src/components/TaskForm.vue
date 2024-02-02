@@ -2,8 +2,9 @@
     <form @submit.prevent="handleSubmit">
         <input type="text" placeholder="Task to do..." v-model="newTask" />
         <button>Add </button>
+   </form>
 
-    </form>
+   
 </template>
 
 <script setup>

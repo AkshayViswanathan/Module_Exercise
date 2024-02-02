@@ -13,7 +13,6 @@
 </template>
 
 <script>
-// import Popup from "../components/DialogBox.vue"
 
 import ProductList from '../products/productlist.vue'
 export default {

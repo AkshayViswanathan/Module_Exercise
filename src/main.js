@@ -15,7 +15,7 @@ const vuetify = createVuetify({
     directives
   })
 
-// import demo from './components/demo.vue'
+
 
 const app= createApp(App)
 app.use(ElementPlus)

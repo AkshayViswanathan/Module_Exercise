@@ -63,39 +63,6 @@
 
 </template>
 
-<!-- <script>
- export default {
-  props: {
-    // Define the product prop
-    product: {
-      type: Object,
-      required: true,
-    },
-  },<img
-   :src="product.productimage"
-    height="200px"
-    width="150px"
-    cover />
-  data: () => ({
-    show: false,
-  }),
-
-ssetup(props, { emit }) {
-    const show = ref(false);
-
-    function sendEvent() {
-      emit("callAlert", props.product.productName);
-      console.log(props.product.productName);
-    }
-
-    return {
-      show,emit
-      sendEvent,
-    };
-  },
-  emits: ['callAlert'],
-};
-</script> -->
 
 <script setup>
 import { ref } from 'vue';

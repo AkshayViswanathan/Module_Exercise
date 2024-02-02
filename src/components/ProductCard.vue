@@ -3,14 +3,26 @@
   <v-card
     class="mx-auto"
     max-width="344"
+>
+<template>
+  <v-card
+    class="mx-auto"
+    max-width="200"
+    height="200"
+    image={{product.productimage}}
+    title="Card title"
+    theme="dark"
+  ></v-card>
+</template>
 
-   display="flex" 
-    flex-wrap= "wrap" >
+  <v-img
+   :src="product.productimage"
+    height="200px"
+    width="400px"
+    title="orange"
+    cover />
 
-    <img
-     :src="product.productimage"
-      height="190px"
-      cover />
+
 
     <v-card-title>
      {{ product.productName }}
@@ -59,7 +71,11 @@
       type: Object,
       required: true,
     },
-  },
+  },<img
+   :src="product.productimage"
+    height="200px"
+    width="150px"
+    cover />
   data: () => ({
     show: false,
   }),

@@ -16,9 +16,8 @@
 
         </div>
         <div v-else class="nothing">
-    <h3>No image uploaded yet</h3>
+    <h3 class="h3">No image uploaded yet</h3>
   </div>
-        
   </div>
   </div>
     </div>

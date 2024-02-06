@@ -1,7 +1,7 @@
 
 <template>
     <div class="nothing">
-    <h3>Upload Images</h3>
+    <h3 class="h3">Upload Images</h3>
 </div>
   <div class="upload">
   <el-upload
@@ -54,3 +54,34 @@ const goToDisplayPage = () =>{
     }
 
 </script>
+
+
+<style>
+.nav-btn{   
+    display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  background-color: #5495da;
+  color: #fff;
+margin: 30px;
+}
+
+
+.sec{
+    margin: 30px;
+
+}
+
+.h3{
+    margin: 20px;
+}
+
+
+
+</style>

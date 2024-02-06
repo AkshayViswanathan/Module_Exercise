@@ -16,6 +16,11 @@ const store2 = useStore()
 
 </script>
 
+
+
+
+
+
 <style >
 
 .task{

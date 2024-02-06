@@ -1,19 +1,12 @@
 <template>
 
+
+
   <v-card
     class="mx-auto"
     max-width="344"
 >
-<template>
-  <v-card
-    class="mx-auto"
-    max-width="200"
-    height="200"
-    image={{product.productimage}}
-    title="Card title"
-    theme="dark"
-  ></v-card>
-</template>
+
 
   <v-img
    :src="product.productimage"
@@ -55,11 +48,10 @@
         </v-card-text>
       </div>
     </v-expand-transition>
-      
-
  
 
   </v-card>
+
 
 </template>
 
